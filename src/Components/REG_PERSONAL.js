@@ -1,11 +1,18 @@
 import React from 'react'
 import './REG_PERSONAL.css'
-import {TextField , Stack, RadioGroup ,FormControlLabel} from '@mui/material'
+import {TextField , Stack, RadioGroup ,FormControlLabel, FormControl, Button} from '@mui/material'
 import { DesktopDatePicker ,LocalizationProvider} from '@mui/x-date-pickers'
 import {AdapterDayjs} from '@mui/x-date-pickers/AdapterDayjs'
 import dayjs from 'dayjs'
-import Box from '@mui/material/Box'
 import Radio from '@mui/material/Radio'
+import { pink } from '@mui/material/colors';
+import Checkbox from '@mui/material/Checkbox';
+
+
+
+
+const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
+
 
 function REG_PERSONAL() {
   const [value, setValue] = React.useState(dayjs('2022-08-18T21:11:54'));
@@ -55,37 +62,35 @@ function REG_PERSONAL() {
           <TextField id='txtaddress' fullWidth label='Address'/>
           <label htmlFor='txtgrade'>Grade</label>
           <TextField id='txtgrade' fullWidth label='Grade'/>
+          <label htmlFor='gndbox'>Gender</label>
           <div className='gender-container'>
-            <Box sx={{ display: 'flex', gap: 2 , alignItems:'center'}}>
-              GENDER 
-              <FormControlLabel label='Male' control={
-                  <Radio
-                  id='rmale'
-                  checked={selectedValue === 'Male'}
-                  onChange={handleChange2}
-                  value="Male"
-                  name="radio-buttons"
-                  size='small'
-                  sx={{width:'2px',height:'2px' ,marginLeft:'20px'}}
-                  componentsprops={{ input: { 'aria-label': 'A'} }}
-
-                />
-              }/>
-              <FormControlLabel label='Female' control={
-                <Radio
-                id='rmfemale'
-                checked={selectedValue === 'Female'}
-                onChange={handleChange2}
-                value="Female"
-                name="radio-buttons"
-                size='small'
-                sx={{width:'2px',height:'2px'}}
-                componentsprops={{ input: { 'aria-label': 'A'} }}
-              />
-              }/>
-
-            </Box>
+          <FormControl>
+            <RadioGroup
+              row
+              aria-labelledby="demo-row-radio-buttons-group-label"
+              name="row-radio-buttons-group"
+            >
+              <FormControlLabel value="male" control={<Radio size='small'/>} label="Male" />
+              <FormControlLabel value="female" control={<Radio size='small'/>} label="Female" />
+              <FormControlLabel value="other" control={<Radio size='small'/>} label="Other" />
+            </RadioGroup>
+          </FormControl>
           </div>
+          <label>Categories Your Interested</label>
+          <div className='category-container'>
+              <label><Checkbox {...label}  size='small' />Photography </label>
+              <label><Checkbox {...label}  size='small' />Videography</label>
+              <label><Checkbox {...label}  size='small' />Technical </label>
+              <label> <Checkbox {...label}  size='small' />Announcing</label>
+              <label> <Checkbox {...label}  size='small' />Reporting</label>
+              <label><Checkbox {...label}  size='small' />Photo & Video Editing </label>
+              <label><Checkbox {...label}  size='small' />Graphic Designing </label>
+              <label><Checkbox {...label}  size='small' />Web Designing </label>
+          </div>
+          <div className='btn-next'>
+            <Button variant='contained'>next Step</Button>
+          </div>
+
         </form>
       </div>
     </div>
