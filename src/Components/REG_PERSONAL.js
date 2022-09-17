@@ -23,7 +23,6 @@ function REG_PERSONAL() {
     setSelectedValue(event.target.value);
     console.log(selectedValue.toString())
   }
-
   const handleChange = (newValue) => {
     setValue(newValue);
   };
