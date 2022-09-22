@@ -5,32 +5,30 @@ import { DesktopDatePicker ,LocalizationProvider} from '@mui/x-date-pickers'
 import {AdapterDayjs} from '@mui/x-date-pickers/AdapterDayjs'
 import dayjs from 'dayjs'
 import Radio from '@mui/material/Radio'
-import { pink } from '@mui/material/colors';
 import Checkbox from '@mui/material/Checkbox';
-
-
-
+import { useEffect ,  useState } from 'react';
 
 const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
 
-
 function REG_PERSONAL() {
-  const [value, setValue] = React.useState(dayjs('2022-08-18T21:11:54'));
-
-  const [selectedValue, setSelectedValue] = React.useState('a');
-
-  const handleChange2 = (event) => {
-    setSelectedValue(event.target.value);
-    console.log(selectedValue.toString())
-  }
+  const [value, setValue] = useState(dayjs('2022-08-18T21:11:54'));
+  const [selectedValue, setSelectedValue] = useState('a');
   const handleChange = (newValue) => {
     setValue(newValue);
   };
 
+  const [isphotography,setPhotography] = useState(false) 
+  const [isvideography,setVideography] = useState(false) 
+  const [istechnical,setTechnical] = useState(false) 
+  const [isannouncing,setAnnouncing] = useState(false) 
+  const [isreporting,setReporting] = useState(false) 
+  const [isphotoediting,setPhotoediting] = useState(false) 
+  const [isvideoediting,setVideoediting] = useState(false) 
+  const [isgraphicdesigning,setGraphicDesigning] = useState(false) 
+  const [iswebdesigning,setWebdesigning] = useState(false) 
+
   return (
-    <div className='reg-form'>
-      <div className='form-data'>
-        <form>
+    <form>
           <label htmlFor='txtmail'>Email Adress</label>
           <TextField id='txtmail' fullWidth label='Email Adress'/>
 
@@ -57,10 +55,15 @@ function REG_PERSONAL() {
           </Stack>
         </LocalizationProvider>
 
-        <label htmlFor='txtaddress'>Address</label>
+          <label htmlFor='txtaddress'>Address</label>
           <TextField id='txtaddress' fullWidth label='Address'/>
+
           <label htmlFor='txtgrade'>Grade</label>
           <TextField id='txtgrade' fullWidth label='Grade'/>
+
+          <label htmlFor='txtindex'>Index Number</label>
+          <TextField id='txtindex' fullWidth label='Index Number'/>
+
           <label htmlFor='gndbox'>Gender</label>
           <div className='gender-container'>
           <FormControl>
@@ -77,7 +80,7 @@ function REG_PERSONAL() {
           </div>
           <label>Categories Your Interested</label>
           <div className='category-container'>
-              <label><Checkbox {...label}  size='small' />Photography </label>
+              <label><Checkbox onChange={(e)=>{console.log(e.target.checked)}} {...label}  size='small' />Photography </label>
               <label><Checkbox {...label}  size='small' />Videography</label>
               <label><Checkbox {...label}  size='small' />Technical </label>
               <label> <Checkbox {...label}  size='small' />Announcing</label>
@@ -86,13 +89,7 @@ function REG_PERSONAL() {
               <label><Checkbox {...label}  size='small' />Graphic Designing </label>
               <label><Checkbox {...label}  size='small' />Web Designing </label>
           </div>
-          <div className='btn-next'>
-            <Button variant='contained'>next Step</Button>
-          </div>
-
         </form>
-      </div>
-    </div>
   )
 } 
 

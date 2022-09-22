@@ -1,21 +1,17 @@
 import React from 'react'
-import {TextField} from '@mui/material'
 import './REG_Photography.css'
 import TextareaAutosize from '@mui/material/TextareaAutosize'
 import Checkbox from '@mui/material/Checkbox';
 import {Button} from '@mui/material'
-import Alert from '@mui/material/Alert';
-import Stack from '@mui/material/Stack';
-
 
 const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
+
 
 function REG_Photography() {
   return (
     <div className='reg-form'>
         <div className='form-data'>
-            <form>
-                <p>Choose Paths</p>
+        <p>Choose Paths</p>
                 <div className='ds-container'>
                   <label><Checkbox {...label}  size='small' />DSLR / MIRRORLESS </label>
                   <label><Checkbox {...label}  size='small' />ARIAL PHOTOGRAPHY</label>
@@ -98,19 +94,16 @@ function REG_Photography() {
                 <label>{'PHOTOGRAPHY(MOBILE)'}</label>
                 <div className='dslr-mirrorless'>
                   <div className='dslr-mirrorless-container'>
-                    
-                  <Alert variant="filled" severity="warning" sx={{width:'100%'}}>
-                    Your mobile device must have some capabilities with photography
-                  </Alert>
-                  </div>
-                  <label>Mobiles</label>
-                  <div className='dslr-mirrorless-container'> 
-                    <TextareaAutosize
-                      aria-label="minimum height"
-                      minRows={3}
-                      placeholder="Devices you have"
-                      style={{width:'100%'}}
-                    />
+                    <p>Your device must have requirements that compatible with Photography</p>
+                    </div>
+                    <label>Mobiles</label>
+                    <div className='dslr-mirrorless-container'> 
+                      <TextareaAutosize
+                        aria-label="minimum height"
+                        minRows={3}
+                        placeholder="Devices you have"
+                        style={{width:'100%'}}
+                      />
                   </div>
                   <label>Skills and Experiance you have</label>
                   <div className='dslr-mirrorless-container'> 
@@ -125,7 +118,6 @@ function REG_Photography() {
                 <div className='btn-next'>
                   <Button variant='contained'>next Step</Button>
                 </div>
-            </form>
         </div>
     </div>
   )
