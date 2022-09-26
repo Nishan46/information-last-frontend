@@ -19,9 +19,6 @@ function Registration() {
         <div className='reg-form'>
           <div className='form-data'>
             <REG_PERSONAL/>
-            <div className='btn-container'>
-              <Button className='btnsubmit' variant='contained'>Register</Button>
-            </div>
           </div>
         </div>
       </div>

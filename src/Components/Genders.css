@@ -19,12 +19,11 @@
     display: none;
 }
 .radio span{
-    width: 5px;
-    height: 5px;
+    width: 10px;
+    height: 10px;
     border-radius: 50%;
     background-color: rgb(238, 239, 243);
     position: relative;
-
 }
 
 .radio span:after{

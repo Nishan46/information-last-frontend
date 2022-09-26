@@ -18,7 +18,6 @@ function REG_PERSONAL() {
   const handleChange = (newValue) => {
     setValue(newValue);
   };
-
   const [isphotography,setPhotography] = useState(false) 
   const [isvideography,setVideography] = useState(false) 
   const [istechnical,setTechnical] = useState(false) 
@@ -29,10 +28,15 @@ function REG_PERSONAL() {
   const [isgraphicdesigning,setGraphicDesigning] = useState(false) 
   const [iswebdesigning,setWebdesigning] = useState(false) 
 
+  const HandleSubmit = (event) =>{
+    event.preventDefault();
+    console.log('submitted');
+  }
+
   return (
-    <form>
+    <form onSubmit={HandleSubmit}>
           <label htmlFor='txtmail'>Email Adress</label>
-          <TextField id='txtmail' fullWidth label='Email Adress'/>
+          <TextField id='txtmail' name='txtmail' fullWidth label='Email Adress'/>
 
           <label htmlFor='txtfirst'>First Name</label>
           <TextField id='txtfirst' fullWidth label='First Name'/>
@@ -73,6 +77,9 @@ function REG_PERSONAL() {
               <label><Checkbox {...label}  size='small' />Graphic Designing </label>
               <label><Checkbox {...label}  size='small' />Web Designing </label>
           </div>
+          <div className='btn-container'>
+              <Button className='btnsubmit' type='submit' variant='contained'>Register</Button>
+            </div>
         </form>
   )
 } 
