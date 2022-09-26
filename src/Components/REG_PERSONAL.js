@@ -7,6 +7,8 @@ import dayjs from 'dayjs'
 import Radio from '@mui/material/Radio'
 import Checkbox from '@mui/material/Checkbox';
 import { useEffect ,  useState } from 'react';
+import Genders from './Genders';
+import BirthDay from './BirthDay'
 
 const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
 
@@ -42,19 +44,9 @@ function REG_PERSONAL() {
           <TextField id='txtfull' fullWidth label='Last Name'/>
 
           <label htmlFor='txtbirth'>Birth Day</label>
-          <LocalizationProvider dateAdapter={AdapterDayjs}>
-          <Stack spacing={10}>
-            <DesktopDatePicker
-              id='txtbirth'
-              label="Birth Day"
-              inputFormat="MM/DD/YYYY"
-              value={value}
-              onChange={handleChange}
-              renderInput={(params) => <TextField {...params} />}
-            />
-          </Stack>
-        </LocalizationProvider>
-
+          <div className='birth-container'>
+            <BirthDay/>
+          </div>
           <label htmlFor='txtaddress'>Address</label>
           <TextField id='txtaddress' fullWidth label='Address'/>
 
@@ -66,17 +58,9 @@ function REG_PERSONAL() {
 
           <label htmlFor='gndbox'>Gender</label>
           <div className='gender-container'>
-          <FormControl>
-            <RadioGroup
-              row
-              aria-labelledby="demo-row-radio-buttons-group-label"
-              name="row-radio-buttons-group"
-            >
-              <FormControlLabel value="male" control={<Radio size='small'/>} label="Male" />
-              <FormControlLabel value="female" control={<Radio size='small'/>} label="Female" />
-              <FormControlLabel value="other" control={<Radio size='small'/>} label="Other" />
-            </RadioGroup>
-          </FormControl>
+            <Genders value='Male'/>
+            <Genders value='Female'/>
+            <Genders value='Other'/>
           </div>
           <label>Categories Your Interested</label>
           <div className='category-container'>
