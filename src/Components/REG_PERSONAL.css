@@ -26,7 +26,6 @@
     border-radius: 4px;
     display: flex;
     flex-direction: column;
-    padding-bottom: 20px;
     justify-content: center;
 }
 .birth-container{

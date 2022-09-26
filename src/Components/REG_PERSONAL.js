@@ -1,23 +1,19 @@
 import React from 'react'
 import './REG_PERSONAL.css'
-import {TextField , Stack, RadioGroup ,FormControlLabel, FormControl, Button , FormLabel} from '@mui/material'
-import { DesktopDatePicker ,LocalizationProvider} from '@mui/x-date-pickers'
-import {AdapterDayjs} from '@mui/x-date-pickers/AdapterDayjs'
-import dayjs from 'dayjs'
+import {TextField, RadioGroup ,FormControlLabel, FormControl, Button} from '@mui/material'
 import Radio from '@mui/material/Radio'
 import Checkbox from '@mui/material/Checkbox';
-import { useEffect ,  useState } from 'react';
-import Genders from './Genders';
+import { useState } from 'react';
 import BirthDay from './BirthDay'
-
 const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
 
+const registerData = {user_name:"",first_name:"",last_name:"",admission_id:"",grade:"",full_name:"",email:"",phone:"",address:"",birthday:"",gender:""}
+
+
+
 function REG_PERSONAL() {
-  const [value, setValue] = useState(dayjs('2022-08-18T21:11:54'));
-  const [selectedValue, setSelectedValue] = useState('a');
-  const handleChange = (newValue) => {
-    setValue(newValue);
-  };
+
+  const [registerValues,setRegisterValues] = useState(registerData);
   const [isphotography,setPhotography] = useState(false) 
   const [isvideography,setVideography] = useState(false) 
   const [istechnical,setTechnical] = useState(false) 
@@ -26,45 +22,56 @@ function REG_PERSONAL() {
   const [isphotoediting,setPhotoediting] = useState(false) 
   const [isvideoediting,setVideoediting] = useState(false) 
   const [isgraphicdesigning,setGraphicDesigning] = useState(false) 
-  const [iswebdesigning,setWebdesigning] = useState(false) 
+  const [iswebdesigning,setWebdesigning] = useState(false)
 
   const HandleSubmit = (event) =>{
     event.preventDefault();
     console.log('submitted');
   }
-
   return (
     <form onSubmit={HandleSubmit}>
           <label htmlFor='txtmail'>Email Adress</label>
-          <TextField id='txtmail' name='txtmail' fullWidth label='Email Adress'/>
+          <TextField id='txtmail' name='email'  fullWidth placeholder='Email' value={registerValues.email}/>
 
           <label htmlFor='txtfirst'>First Name</label>
-          <TextField id='txtfirst' fullWidth label='First Name'/>
+          <TextField id='txtfirst' name='first_name' placeholder='First Name' fullWidth value={registerValues.first_name}/>
 
           <label htmlFor='txtlast'>Last Name</label>
-          <TextField id='txtlast' fullWidth label='Last Name'/>
+          <TextField id='txtlast' name='last_name' fullWidth placeholder='Last Name' value={registerValues.last_name}/>
 
           <label htmlFor='txtfull'>Full Name</label>
-          <TextField id='txtfull' fullWidth label='Last Name'/>
+          <TextField id='txtfull' name='full_name' fullWidth placeholder='Full Name' value={registerValues.full_name}/>
 
           <label htmlFor='txtbirth'>Birth Day</label>
           <div className='birth-container'>
-            <BirthDay/>
+            <BirthDay name='birthday'/>
           </div>
           <label htmlFor='txtaddress'>Address</label>
-          <TextField id='txtaddress' fullWidth label='Address'/>
+          <TextField id='txtaddress' name='address' fullWidth placeholder='Address' value={registerValues.address}/>
 
           <label htmlFor='txtgrade'>Grade</label>
-          <TextField id='txtgrade' fullWidth label='Grade'/>
+          <TextField id='txtgrade' name='grade' fullWidth placeholder='Grade' value={registerValues.grade}/>
 
           <label htmlFor='txtindex'>Index Number</label>
-          <TextField id='txtindex' fullWidth label='Index Number'/>
+          <TextField id='txtindex' name='admission_id' fullWidth placeholder='Index Number 'value={registerValues.admission_id}/>
+
+          <label htmlFor='txtmobile'>Mobile Number</label>
+          <TextField type='tel' id='txtmobile' name='phone' fullWidth placeholder='Mobile Number 'value={registerValues.phone}/>
 
           <label htmlFor='gndbox'>Gender</label>
           <div className='gender-container'>
-            <Genders value='Male'/>
-            <Genders value='Female'/>
-            <Genders value='Other'/>
+            <FormControl>
+              <RadioGroup
+                row
+                aria-labelledby="demo-row-radio-buttons-group-label"
+                name="gender"
+                onChange={(e)=>{console.log(e.target.value)}}
+              >
+                <FormControlLabel value="Male" control={<Radio size='small'/>} label="Male" />
+                <FormControlLabel value="Female" control={<Radio size='small'/>} label="Female" />
+                <FormControlLabel value="Other" control={<Radio size='small'/>} label="Other" />
+              </RadioGroup>
+            </FormControl>
           </div>
           <label>Categories Your Interested</label>
           <div className='category-container'>
