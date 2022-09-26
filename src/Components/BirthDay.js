@@ -4,7 +4,7 @@ import './BirthDay.css'
 function BirthDay(props) {
   return (
     <div className='birthday'>
-        <input name={props.name} type="date" />
+        <input onChange={props.onChange} name={props.name} type="date" value={props.value}/>
     </div>
   )
 }

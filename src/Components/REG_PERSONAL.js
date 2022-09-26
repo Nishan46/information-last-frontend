@@ -26,37 +26,42 @@ function REG_PERSONAL() {
 
   const HandleSubmit = (event) =>{
     event.preventDefault();
-    console.log('submitted');
+    console.log(registerValues);
+  }
+
+  const HandleChange = (e) =>{
+    const {name , value} = e.target;
+    setRegisterValues({...registerValues,[name]:value, user_name:`${registerValues.first_name.toLowerCase()}@${registerValues.admission_id}`});
   }
   return (
     <form onSubmit={HandleSubmit}>
           <label htmlFor='txtmail'>Email Adress</label>
-          <TextField id='txtmail' name='email'  fullWidth placeholder='Email' value={registerValues.email}/>
+          <TextField id='txtmail' name='email'  fullWidth placeholder='Email' value={registerValues.email} onChange={HandleChange}/>
 
           <label htmlFor='txtfirst'>First Name</label>
-          <TextField id='txtfirst' name='first_name' placeholder='First Name' fullWidth value={registerValues.first_name}/>
+          <TextField id='txtfirst' name='first_name' placeholder='First Name' fullWidth value={registerValues.first_name} onChange={HandleChange}/>
 
           <label htmlFor='txtlast'>Last Name</label>
-          <TextField id='txtlast' name='last_name' fullWidth placeholder='Last Name' value={registerValues.last_name}/>
+          <TextField id='txtlast' name='last_name' fullWidth placeholder='Last Name' value={registerValues.last_name} onChange={HandleChange}/>
 
           <label htmlFor='txtfull'>Full Name</label>
-          <TextField id='txtfull' name='full_name' fullWidth placeholder='Full Name' value={registerValues.full_name}/>
+          <TextField id='txtfull' name='full_name' fullWidth placeholder='Full Name' value={registerValues.full_name} onChange={HandleChange}/>
 
           <label htmlFor='txtbirth'>Birth Day</label>
           <div className='birth-container'>
-            <BirthDay name='birthday'/>
+            <BirthDay value={registerValues.birthday} name='birthday' onChange={HandleChange}/>
           </div>
           <label htmlFor='txtaddress'>Address</label>
-          <TextField id='txtaddress' name='address' fullWidth placeholder='Address' value={registerValues.address}/>
+          <TextField id='txtaddress' name='address' fullWidth placeholder='Address' value={registerValues.address} onChange={HandleChange}/>
 
           <label htmlFor='txtgrade'>Grade</label>
-          <TextField id='txtgrade' name='grade' fullWidth placeholder='Grade' value={registerValues.grade}/>
+          <TextField id='txtgrade' name='grade' fullWidth placeholder='Grade' value={registerValues.grade} onChange={HandleChange}/>
 
           <label htmlFor='txtindex'>Index Number</label>
-          <TextField id='txtindex' name='admission_id' fullWidth placeholder='Index Number 'value={registerValues.admission_id}/>
+          <TextField id='txtindex' name='admission_id' fullWidth placeholder='Index Number 'value={registerValues.admission_id} onChange={HandleChange}/>
 
           <label htmlFor='txtmobile'>Mobile Number</label>
-          <TextField type='tel' id='txtmobile' name='phone' fullWidth placeholder='Mobile Number 'value={registerValues.phone}/>
+          <TextField type='tel' id='txtmobile' name='phone' fullWidth placeholder='Mobile Number 'value={registerValues.phone} onChange={HandleChange}/>
 
           <label htmlFor='gndbox'>Gender</label>
           <div className='gender-container'>
@@ -65,7 +70,7 @@ function REG_PERSONAL() {
                 row
                 aria-labelledby="demo-row-radio-buttons-group-label"
                 name="gender"
-                onChange={(e)=>{console.log(e.target.value)}}
+                onChange={HandleChange}
               >
                 <FormControlLabel value="Male" control={<Radio size='small'/>} label="Male" />
                 <FormControlLabel value="Female" control={<Radio size='small'/>} label="Female" />
