@@ -39,7 +39,6 @@ function REG_PERSONAL() {
   }
 
   const validate = (values) =>{
-
     const errors = {};
     const regex =  /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
 
@@ -53,7 +52,7 @@ function REG_PERSONAL() {
     if(!values.first_name){
       errors.first_name = "first Name required";
     }
-    if(!values.first_name){
+    if(!values.last_name){
       errors.last_name = "last Name required";
     }
     
@@ -97,6 +96,13 @@ function REG_PERSONAL() {
   const HandleChange = (e) =>{
     const {name , value} = e.target;
     setRegisterValues({...registerValues,[name]:value, user_name:`${registerValues.first_name.toLowerCase()}@${registerValues.admission_id}`});
+    if(name === "gender")
+    {
+      setErrorValues({...errorValues,[name]:""})
+    }else
+    {
+      setErrorValues({...errorValues,[name]:false})
+    }
   }
 
   return (
@@ -140,7 +146,7 @@ function REG_PERSONAL() {
           {errorValues.phone && <div style={{'display':'block'}} className='error-alert'><p>{errorValues.phone}</p></div>}
 
           <label htmlFor='gndbox'>Gender</label>
-          <Valid_Gender error={errorValues.gender && true} onChange={HandleChange} er={errorValues.email && true}/>
+          <Valid_Gender error={errorValues.gender && true} onChange={HandleChange} er={errorValues.gender}/>
           
           <label>Categories Your Interested</label>
           <div className='category-container'>
@@ -172,9 +178,9 @@ const Valid_Gender = (props) =>{
             onChange={props.onChange}
             error={props.er}
           >
-            <FormControlLabel value="Male" control={<Radio size='small'/>} label="Male" />
-            <FormControlLabel value="Female" control={<Radio size='small'/>} label="Female" />
-            <FormControlLabel value="Other" control={<Radio size='small'/>} label="Other" />
+            <FormControlLabel sx={{color:'rgb(255,0,0)'}} value="Male" control={<Radio size='small'/>} label="Male" />
+            <FormControlLabel sx={{color:'rgb(255,0,0)'}} value="Female" control={<Radio size='small'/>} label="Female" />
+            <FormControlLabel sx={{color:'rgb(255,0,0)'}} value="Other" control={<Radio size='small'/>} label="Other" />
           </RadioGroup>
         </FormControl>
         {props.er && <div style={{'display':'block'}} className='error-alert'><p>{props.er}</p></div>}
@@ -192,9 +198,9 @@ const Valid_Gender = (props) =>{
             onChange={props.onChange}
             error={props.er}
           >
-            <FormControlLabel value="Male" control={<Radio size='small'/>} label="Male" />
-            <FormControlLabel value="Female" control={<Radio size='small'/>} label="Female" />
-            <FormControlLabel value="Other" control={<Radio size='small'/>} label="Other" />
+            <FormControlLabel sx={{color:'rgb(0,0,0)'}} value="Male" control={<Radio size='small'/>} label="Male" />
+            <FormControlLabel  sx={{color:'rgb(0,0,0)'}} value="Female" control={<Radio size='small'/>} label="Female" />
+            <FormControlLabel sx={{color:'rgb(0,0,0)'}}  value="Other" control={<Radio size='small'/>} label="Other" />
           </RadioGroup>
         </FormControl>
         {props.er && <div style={{'display':'block'}} className='error-alert'><p>{props.er}</p></div>}

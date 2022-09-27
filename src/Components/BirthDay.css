@@ -17,6 +17,7 @@
     height: 35px;
     font-size: 1.1rem;
     text-transform: uppercase;
+    color:red;
     padding: 0;
     padding-left: 10px;
 }
@@ -30,6 +31,7 @@
     text-transform: uppercase;
     padding: 0;
     padding-left: 10px;
+    color:black;
 }
 
 .birth-container-normal{
